@@ -138,10 +138,18 @@ add_action( 'widgets_init', 'mario_tolvo_portfolio_widgets_init' );
  * Enqueue scripts and styles.
  */
 function mario_tolvo_portfolio_scripts() {
-	wp_enqueue_style( 'mario_tolvo_portfolio-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'mario_tolvo_portfolio-style', 'rtl', 'replace' );
+	$main_css = get_template_directory() . '/dist/assets/main.css';
+	if ( file_exists( $main_css ) ) {
+		wp_enqueue_style( 'mario_tolvo_portfolio-main', get_template_directory_uri() . '/dist/assets/main.css', array(), filemtime( $main_css ) );
+	} else {
+		wp_enqueue_style( 'mario_tolvo_portfolio-style', get_stylesheet_uri(), array(), _S_VERSION );
+		wp_style_add_data( 'mario_tolvo_portfolio-style', 'rtl', 'replace' );
+	}
 
-	wp_enqueue_script( 'mario_tolvo_portfolio-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	$main_js = get_template_directory() . '/dist/assets/main.js';
+	if ( file_exists( $main_js ) ) {
+		wp_enqueue_script( 'mario_tolvo_portfolio-main', get_template_directory_uri() . '/dist/assets/main.js', array(), filemtime( $main_js ), true );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

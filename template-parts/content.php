@@ -9,8 +9,8 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'bg-white border rounded-4 shadow-sm p-4 p-lg-5 mb-4' ); ?>>
+	<header class="entry-header mb-4">
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -20,7 +20,7 @@
 
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
+			<div class="entry-meta text-muted small mb-3">
 				<?php
 				mario_tolvo_portfolio_posted_on();
 				mario_tolvo_portfolio_posted_by();
@@ -31,7 +31,7 @@
 
 	<?php mario_tolvo_portfolio_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content mt-3">
 		<?php
 		the_content(
 			sprintf(
@@ -57,7 +57,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer mt-4 pt-3 border-top">
 		<?php mario_tolvo_portfolio_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -1,0 +1,43 @@
+.main-navigation .nav,
+.main-navigation .menu {
+	display: none;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding-left: 0;
+	list-style: none;
+	margin: 0;
+}
+
+.main-navigation .nav.is-open,
+.main-navigation .menu.is-open {
+	display: flex;
+}
+
+.main-navigation .nav a,
+.main-navigation .menu a {
+	color: var(--theme-text);
+	font-weight: 600;
+	padding: 0.25rem 0.5rem;
+	display: inline-block;
+}
+
+.main-navigation .nav a:hover,
+.main-navigation .nav .current-menu-item a,
+.main-navigation .menu a:hover,
+.main-navigation .menu .current-menu-item a {
+	color: var(--theme-accent);
+}
+
+@include media-breakpoint-up(lg) {
+	.main-navigation .nav,
+	.main-navigation .menu {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.menu-toggle {
+		display: none;
+	}
+}

@@ -1,39 +1,28 @@
 === mario_tolvo_portfolio ===
 
-Contributors: automattic
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Contributors: Mario Tolvo
+Tags: blog, portfolio, custom-logo, custom-menu, featured-images
 
-Requires at least: 4.5
-Tested up to: 5.4
-Requires PHP: 5.6
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
-A starter theme called mario_tolvo_portfolio.
+A portfolio-focused WordPress theme built with Bootstrap, Vite and modular SCSS/JS assets.
 
 == Description ==
 
-Description
+mario_tolvo_portfolio is a lightweight theme for showcasing a portfolio or blog with a modern Bootstrap-based layout and a Vite-powered workflow.
 
 == Installation ==
 
-1. In your admin panel, go to Appearance > Themes and click the Add New button.
-2. Click Upload Theme and Choose File, then select the theme's .zip file. Click Install Now.
-3. Click Activate to use your new theme right away.
-
-== Frequently Asked Questions ==
-
-= Does this theme support any plugins? =
-
-mario_tolvo_portfolio includes support for WooCommerce and for Infinite Scroll in Jetpack.
+1. Upload the theme folder to the /wp-content/themes/ directory.
+2. Activate the theme from the Appearance > Themes screen.
+3. Build the assets with npm run build before using the theme in a production environment.
 
 == Changelog ==
 
-= 1.0 - May 12 2015 =
-* Initial release
-
-== Credits ==
-
-* Based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
-* normalize.css https://necolas.github.io/normalize.css/, (C) 2012-2018 Nicolas Gallagher and Jonathan Neal, [MIT](https://opensource.org/licenses/MIT)
+= 1.0.0 =
+* Initial custom theme release with Bootstrap and Vite support.

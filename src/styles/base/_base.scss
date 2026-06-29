@@ -1,0 +1,65 @@
+:root {
+	--theme-bg: #f4f7fb;
+	--theme-surface: #ffffff;
+	--theme-text: #1f2937;
+	--theme-muted: #6b7280;
+	--theme-border: #e5e7eb;
+	--theme-accent: #2563eb;
+	--theme-accent-strong: #1d4ed8;
+	--theme-radius: 1rem;
+}
+
+html {
+	font-size: 16px;
+}
+
+body {
+	background-color: var(--theme-bg);
+	color: var(--theme-text);
+	font-family: $theme-font-sans;
+	line-height: 1.6;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--theme-accent);
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: var(--theme-accent-strong);
+}
+
+.site-main .post,
+.site-main .page,
+.widget {
+	background-color: var(--theme-surface);
+	border: 1px solid var(--theme-border);
+	border-radius: var(--theme-radius);
+}
+
+.entry-title a {
+	color: var(--theme-text);
+}
+
+.entry-title a:hover {
+	color: var(--theme-accent);
+}
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}

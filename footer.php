@@ -11,20 +11,21 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'mario_tolvo_portfolio' ) ); ?>">
+	<footer id="colophon" class="site-footer py-4 mt-5">
+		<div class="container">
+			<div class="site-info text-muted small">
+				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'mario_tolvo_portfolio' ) ); ?>">
+					<?php
+					/* translators: %s: CMS name, i.e. WordPress. */
+					printf( esc_html__( 'Proudly powered by %s', 'mario_tolvo_portfolio' ), 'WordPress' );
+					?>
+				</a>
+				<span class="mx-2">|</span>
 				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'mario_tolvo_portfolio' ), 'WordPress' );
+				printf( esc_html__( 'Theme: %s', 'mario_tolvo_portfolio' ), esc_html( wp_get_theme()->get( 'Name' ) ) );
 				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'mario_tolvo_portfolio' ), 'mario_tolvo_portfolio', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
+			</div><!-- .site-info -->
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

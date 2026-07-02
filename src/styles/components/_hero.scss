@@ -1,0 +1,40 @@
+.hero-block {
+	min-height: 100vh;
+	background-color: #111111;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.hero-block .btn {
+	min-width: 11rem;
+}
+
+.js-scramble-button {
+	position: relative;
+}
+
+.scramble-button__original {
+	visibility: hidden;
+}
+
+.scramble-button__animated {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	white-space: pre;
+	pointer-events: none;
+}
+
+.scramble-button__letter {
+	display: inline-block;
+	text-align: center;
+}
+
+.scramble-button__letter.is-scrambling {
+	font-family: 'Stray', sans-serif;
+	font-weight: 400;
+}

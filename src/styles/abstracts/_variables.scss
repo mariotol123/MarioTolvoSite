@@ -1,9 +1,20 @@
 $theme-font-sans: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$theme-bg: #f4f7fb;
+$theme-font-heading: 'Sora', sans-serif;
+$theme-bg: #f3f3f1;
 $theme-surface: #ffffff;
-$theme-text: #1f2937;
-$theme-muted: #6b7280;
-$theme-border: #e5e7eb;
-$theme-accent: #2563eb;
-$theme-accent-strong: #1d4ed8;
+$theme-text: #111111;
+$theme-muted: #6f6f6f;
+$theme-border: #d8d8d8;
+$theme-accent: #fff;
+$theme-accent-strong: #d96f0b;
 $theme-radius: 1rem;
+
+// Bootstrap palette overrides (define before importing Bootstrap)
+$primary: $theme-accent;
+$secondary: #2b2b2b;
+$success: #1f1f1f;
+$info: #4a4a4a;
+$warning: #f28c28;
+$danger: #b45309;
+$light: #ffffff;
+$dark: #111111;

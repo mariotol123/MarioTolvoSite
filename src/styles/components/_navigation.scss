@@ -15,17 +15,49 @@
 
 .main-navigation .nav a,
 .main-navigation .menu a {
-	color: var(--theme-text);
+	position: relative;
+	color: #fff;
 	font-weight: 600;
 	padding: 0.25rem 0.5rem;
 	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.main-navigation .nav a::after,
+.main-navigation .menu a::after {
+	position: absolute;
+	right: 0.5rem;
+	left: 0.5rem;
+	height: 3px;
+	background-color: currentColor;
+	content: '';
+	transform: scaleX(0);
+	transform-origin: left center;
+	transition: transform 0.8s ease;
+}
+
+.main-navigation .nav a::after,
+.main-navigation .menu a::after {
+	bottom: 0;
 }
 
 .main-navigation .nav a:hover,
+.main-navigation .nav a:focus-visible,
 .main-navigation .nav .current-menu-item a,
 .main-navigation .menu a:hover,
+.main-navigation .menu a:focus-visible,
 .main-navigation .menu .current-menu-item a {
-	color: var(--theme-accent);
+	color: #fff;
+}
+
+.main-navigation .nav a:hover::after,
+.main-navigation .nav a:focus-visible::after,
+.main-navigation .nav .current-menu-item a::after,
+.main-navigation .menu a:hover::after,
+.main-navigation .menu a:focus-visible::after,
+.main-navigation .menu .current-menu-item a::after {
+	transform: scaleX(1);
 }
 
 @include media-breakpoint-up(lg) {

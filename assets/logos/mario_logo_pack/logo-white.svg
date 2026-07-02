@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mario Tolvo logo">
+  <defs>
+    <linearGradient id="accent" x1="120" y1="120" x2="392" y2="392" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22E6FF"/>
+      <stop offset="100%" stop-color="#006BFF"/>
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- Monogram MT -->
+    <path d="M96 384 V128 H140 L256 252" stroke="#FFFFFF" stroke-width="34"/>
+    <path d="M416 384 V128 H372 L256 252" stroke="url(#accent)" stroke-width="34"/>
+    <path d="M256 252 V384" stroke="#FFFFFF" stroke-width="34"/>
+
+    <!-- Code symbol integrated -->
+    <path d="M194 326 L146 288 L194 250" stroke="url(#accent)" stroke-width="24"/>
+    <path d="M318 250 L366 288 L318 326" stroke="url(#accent)" stroke-width="24"/>
+    <path d="M282 244 L230 334" stroke="#FFFFFF" stroke-width="24"/>
+  </g>
+</svg>

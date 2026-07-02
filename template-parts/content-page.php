@@ -10,15 +10,21 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	<!-- Page title intentionally hidden -->
 
 	<?php mario_tolvo_portfolio_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
-		the_content();
+		if ( function_exists( 'have_rows' ) && function_exists( 'the_row' ) ) {
+			if ( have_rows( 'content_blocks' ) ) {
+				mario_tolvo_portfolio_render_flexible_content();
+			} else {
+				the_content();
+			}
+		} else {
+			the_content();
+		}
 
 		wp_link_pages(
 			array(

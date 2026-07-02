@@ -1,4 +1,5 @@
 <?php
+// test-theme-active
 /**
  * mario_tolvo_portfolio functions and definitions
  *
@@ -10,6 +11,67 @@
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
+}
+
+if ( ! class_exists( 'Mario_Tolvo_Portfolio_Nav_Walker' ) ) {
+	/**
+	 * Custom nav walker for Bootstrap-style menu markup.
+	 */
+	class Mario_Tolvo_Portfolio_Nav_Walker extends Walker_Nav_Menu {
+		public function start_lvl( &$output, $depth = 0, $args = null ) {
+			$indent = str_repeat( "\t", $depth );
+			$output .= "\n" . $indent . '<ul class="dropdown-menu" role="menu">' . "\n";
+		}
+
+		public function end_lvl( &$output, $depth = 0, $args = null ) {
+			$indent = str_repeat( "\t", $depth );
+			$output .= $indent . '</ul>' . "\n";
+		}
+
+		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+			$indent = str_repeat( "\t", $depth );
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$classes[] = 'nav-item';
+
+			if ( in_array( 'menu-item-has-children', $classes, true ) ) {
+				$classes[] = 'dropdown';
+			}
+
+			if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current_page_item', $classes, true ) ) {
+				$classes[] = 'active';
+			}
+
+			$class_names = implode( ' ', array_filter( $classes ) );
+			$output     .= $indent . '<li class="' . esc_attr( $class_names ) . '">';
+
+			$link_classes = array( 'nav-link' );
+			if ( in_array( 'active', $classes, true ) ) {
+				$link_classes[] = 'active';
+			}
+			if ( in_array( 'dropdown', $classes, true ) ) {
+				$link_classes[] = 'dropdown-toggle';
+			}
+
+			$link_class = implode( ' ', array_filter( $link_classes ) );
+			$attributes = ' class="' . esc_attr( $link_class ) . '"';
+
+			if ( in_array( 'dropdown', $classes, true ) ) {
+				$attributes .= ' data-bs-toggle="dropdown"';
+			}
+
+			if ( in_array( 'active', $classes, true ) ) {
+				$attributes .= ' aria-current="page"';
+			}
+
+			$output .= '<a' . $attributes . ' href="' . esc_url( $item->url ) . '">';
+			$output .= apply_filters( 'the_title', $item->title, $item->ID );
+			$output .= '</a>';
+		}
+
+		public function end_el( &$output, $item, $depth = 0, $args = null ) {
+			$output .= "</li>\n";
+		}
+	}
 }
 
 /**
@@ -85,6 +147,21 @@ function mario_tolvo_portfolio_setup() {
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
+	// Disable the block editor for posts and pages.
+	add_filter( 'use_block_editor_for_post', '__return_false', 10 );
+	add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
+	add_filter( 'gutenberg_can_edit_post_type', '__return_false', 10 );
+	add_filter( 'use_widgets_block_editor', '__return_false' );
+
+	// Load ACF JSON field groups from the theme.
+	add_filter( 'acf/settings/save_json', function( $path ) {
+		return get_template_directory() . '/acf-json';
+	} );
+	add_filter( 'acf/settings/load_json', function( $paths ) {
+		$paths[] = get_template_directory() . '/acf-json';
+		return $paths;
+	} );
+
 	/**
 	 * Add support for core custom logo.
 	 *
@@ -101,6 +178,15 @@ function mario_tolvo_portfolio_setup() {
 	);
 }
 add_action( 'after_setup_theme', 'mario_tolvo_portfolio_setup' );
+
+// Disable Gutenberg editor for posts and pages at the earliest possible hook.
+add_filter( 'use_block_editor_for_post', '__return_false', 10 );
+add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
+add_filter( 'use_block_editor_for_post_type', function( $use_block_editor, $post_type ) {
+	return in_array( $post_type, array( 'post', 'page' ), true ) ? false : $use_block_editor;
+}, 10, 2 );
+add_filter( 'gutenberg_can_edit_post_type', '__return_false', 10 );
+add_filter( 'use_widgets_block_editor', '__return_false' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -138,11 +224,18 @@ add_action( 'widgets_init', 'mario_tolvo_portfolio_widgets_init' );
  * Enqueue scripts and styles.
  */
 function mario_tolvo_portfolio_scripts() {
+	wp_enqueue_style(
+		'mario_tolvo_portfolio-sora',
+		'https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap',
+		array(),
+		null
+	);
+
 	$main_css = get_template_directory() . '/dist/assets/main.css';
 	if ( file_exists( $main_css ) ) {
-		wp_enqueue_style( 'mario_tolvo_portfolio-main', get_template_directory_uri() . '/dist/assets/main.css', array(), filemtime( $main_css ) );
+		wp_enqueue_style( 'mario_tolvo_portfolio-main', get_template_directory_uri() . '/dist/assets/main.css', array( 'mario_tolvo_portfolio-sora' ), filemtime( $main_css ) );
 	} else {
-		wp_enqueue_style( 'mario_tolvo_portfolio-style', get_stylesheet_uri(), array(), _S_VERSION );
+		wp_enqueue_style( 'mario_tolvo_portfolio-style', get_stylesheet_uri(), array( 'mario_tolvo_portfolio-sora' ), _S_VERSION );
 		wp_style_add_data( 'mario_tolvo_portfolio-style', 'rtl', 'replace' );
 	}
 
@@ -156,6 +249,22 @@ function mario_tolvo_portfolio_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'mario_tolvo_portfolio_scripts' );
+
+/**
+ * Add connection hints for the Google Fonts stylesheet and font files.
+ */
+function mario_tolvo_portfolio_resource_hints( $urls, $relation_type ) {
+	if ( 'preconnect' === $relation_type ) {
+		$urls[] = 'https://fonts.googleapis.com';
+		$urls[] = array(
+			'href'        => 'https://fonts.gstatic.com',
+			'crossorigin' => 'anonymous',
+		);
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'mario_tolvo_portfolio_resource_hints', 10, 2 );
 
 /**
  * Implement the Custom Header feature.
@@ -176,6 +285,11 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Flexible content helpers.
+ */
+require get_template_directory() . '/inc/flexible-content.php';
 
 /**
  * Load Jetpack compatibility file.

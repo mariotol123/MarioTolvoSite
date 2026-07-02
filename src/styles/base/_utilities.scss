@@ -1,0 +1,73 @@
+@for $i from 0 through 100 {
+	.u-mt-#{$i} {
+		margin-top: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-mb-#{$i} {
+		margin-bottom: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-ml-#{$i} {
+		margin-left: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-mr-#{$i} {
+		margin-right: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-mx-#{$i} {
+		margin-left: var(--afterclass-space-#{$i}) !important;
+		margin-right: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-my-#{$i} {
+		margin-top: var(--afterclass-space-#{$i}) !important;
+		margin-bottom: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-m-#{$i} {
+		margin: var(--afterclass-space-#{$i}) !important;
+	}
+}
+
+@for $i from 0 through 100 {
+	.u-pt-#{$i} {
+		padding-top: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-pb-#{$i} {
+		padding-bottom: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-pl-#{$i} {
+		padding-left: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-pr-#{$i} {
+		padding-right: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-px-#{$i} {
+		padding-left: var(--afterclass-space-#{$i}) !important;
+		padding-right: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-py-#{$i} {
+		padding-top: var(--afterclass-space-#{$i}) !important;
+		padding-bottom: var(--afterclass-space-#{$i}) !important;
+	}
+
+	.u-p-#{$i} {
+		padding: var(--afterclass-space-#{$i}) !important;
+	}
+}
+
+.u-pt-240 {
+	padding-top: 240px !important;
+}
+
+@each $value in (25, 50, 70, 75, 100) {
+	.u-min-vh-#{$value} {
+		min-height: #{$value}vh;
+	}
+}

@@ -1,0 +1,84 @@
+{
+  "key": "group_686f4483b8abc",
+  "title": "Page Content Blocks",
+  "fields": [
+    {
+      "key": "field_686f4484d0f10",
+      "label": "Content Blocks",
+      "name": "content_blocks",
+      "type": "flexible_content",
+      "instructions": "Aggiungi blocchi di contenuto alla pagina.",
+      "required": 0,
+      "layouts": {
+        "layout_686f4491d0f11": {
+          "key": "layout_686f4491d0f11",
+          "name": "hero",
+          "label": "Hero",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_686f44a0d0f12",
+              "label": "Titolo",
+              "name": "hero_title",
+              "type": "text",
+              "instructions": "Titolo principale dell'hero.",
+              "required": 1
+            },
+            {
+              "key": "field_686f44b1d0f13",
+              "label": "Testo",
+              "name": "hero_text",
+              "type": "textarea",
+              "instructions": "Testo descrittivo dell'hero.",
+              "rows": 4
+            },
+            {
+              "key": "field_686f44c1d0f14",
+              "label": "Immagine di sfondo",
+              "name": "hero_background_image",
+              "type": "image",
+              "instructions": "Immagine di sfondo a tutta larghezza.",
+              "return_format": "array",
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_686f44d1d0f15",
+              "label": "Pulsante principale",
+              "name": "hero_primary_button",
+              "type": "link",
+              "instructions": "Link del primo pulsante."
+            },
+            {
+              "key": "field_686f44e1d0f16",
+              "label": "Pulsante secondario",
+              "name": "hero_secondary_button",
+              "type": "link",
+              "instructions": "Link del secondo pulsante."
+            }
+          ]
+        }
+      },
+      "button_label": "Aggiungi blocco",
+      "min": 0,
+      "max": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [],
+  "active": 1,
+  "description": "Blocco Hero per le pagine.",
+  "modified": 1710000000
+}

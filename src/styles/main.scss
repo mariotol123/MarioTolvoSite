@@ -1,7 +1,17 @@
-@import 'bootstrap/scss/bootstrap';
+@font-face {
+	font-family: 'Stray';
+	src: url('../../assets/fonts/stray/stray.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
 @import 'abstracts/variables';
+@import 'bootstrap/scss/bootstrap';
 @import 'base/base';
+@import 'base/utilities';
 @import 'components/navigation';
+@import 'components/hero';
 @import 'layouts/header';
 @import 'layouts/content';
 @import 'layouts/footer';

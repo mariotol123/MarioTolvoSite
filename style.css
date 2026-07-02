@@ -33,6 +33,44 @@ body {
 	line-height: 1.6;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.page-title,
+.entry-title,
+.widget-title {
+	color: var(--theme-text);
+	font-weight: 700;
+	line-height: 1.2;
+	margin-bottom: 0.75rem;
+}
+
+h1,
+.page-title,
+.entry-title {
+	font-size: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+}
+
+h2 {
+	font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.25rem);
+}
+
+h3 {
+	font-size: clamp(1.3rem, 1.1rem + 0.85vw, 1.75rem);
+}
+
+h4 {
+	font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
+}
+
+h5,
+h6 {
+	font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+}
+
 img {
 	max-width: 100%;
 	height: auto;

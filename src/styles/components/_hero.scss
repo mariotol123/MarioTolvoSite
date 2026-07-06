@@ -10,27 +10,62 @@
 	min-width: 11rem;
 }
 
+.hero-icons__link,
+.hero-icons__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-icons__link {
+	opacity: 0.75;
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hero-icons__link:hover,
+.hero-icons__link:focus-visible {
+	opacity: 1;
+	transform: translateY(-2px);
+}
+
+.hero-icons__image {
+	display: block;
+	width: 28px;
+	height: 28px;
+	object-fit: contain;
+	filter: brightness(0) invert(1);
+}
+
 .js-scramble-button {
 	position: relative;
 }
 
 .scramble-button__original {
-	visibility: hidden;
+	visibility: visible;
 }
 
 .scramble-button__animated {
 	position: absolute;
 	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.js-scramble-button.is-scrambling .scramble-button__original {
+	visibility: hidden;
+}
+
+.js-scramble-button.is-scrambling .scramble-button__animated {
+	visibility: visible;
+}
+
+.scramble-button__letter {
+	position: absolute;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	white-space: pre;
-	pointer-events: none;
-}
-
-.scramble-button__letter {
-	display: inline-block;
 	text-align: center;
 }
 

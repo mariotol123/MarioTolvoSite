@@ -43,6 +43,28 @@ export function initScrambleButtons() {
 
 		const availableLetters = letters.filter((letter) => !letter.classList.contains('is-space'));
 		let animationTimer;
+		let resizeObserver;
+
+		const positionAnimatedLetters = () => {
+			const textNode = originalLabel.firstChild;
+			const animatedBounds = animatedLabel.getBoundingClientRect();
+
+			if (!textNode) {
+				return;
+			}
+
+			letters.forEach((letter, index) => {
+				const range = document.createRange();
+				range.setStart(textNode, index);
+				range.setEnd(textNode, index + 1);
+
+				const characterBounds = range.getBoundingClientRect();
+				letter.style.left = `${characterBounds.left - animatedBounds.left}px`;
+				letter.style.top = `${characterBounds.top - animatedBounds.top}px`;
+				letter.style.width = `${characterBounds.width}px`;
+				letter.style.height = `${characterBounds.height}px`;
+			});
+		};
 
 		const restoreLabel = () => {
 			availableLetters.forEach((letter) => {
@@ -56,6 +78,7 @@ export function initScrambleButtons() {
 
 			if (reduceMotion) {
 				restoreLabel();
+				button.classList.remove('is-scrambling');
 				return;
 			}
 
@@ -69,6 +92,8 @@ export function initScrambleButtons() {
 				.slice(0, numberOfLetters);
 
 			restoreLabel();
+			positionAnimatedLetters();
+			button.classList.add('is-scrambling');
 
 			const updateLetters = () => {
 				const settledLetters = Math.floor(frame / 3);
@@ -81,6 +106,7 @@ export function initScrambleButtons() {
 
 				if (settledLetters >= charactersToAnimate.length) {
 					restoreLabel();
+					button.classList.remove('is-scrambling');
 					return;
 				}
 
@@ -92,6 +118,19 @@ export function initScrambleButtons() {
 		};
 
 		button.replaceChildren(originalLabel, animatedLabel);
+		positionAnimatedLetters();
+
+		if (document.fonts?.ready) {
+			document.fonts.ready.then(positionAnimatedLetters);
+		}
+
+		if ('ResizeObserver' in window) {
+			resizeObserver = new ResizeObserver(positionAnimatedLetters);
+			resizeObserver.observe(button);
+		} else {
+			window.addEventListener('resize', positionAnimatedLetters);
+		}
+
 		button.addEventListener('pointerenter', animateLabel);
 		button.addEventListener('focus', animateLabel);
 	});

@@ -10,6 +10,8 @@ $hero_text = get_sub_field( 'hero_text' );
 $hero_background_image = get_sub_field( 'hero_background_image' );
 $hero_primary_button = get_sub_field( 'hero_primary_button' );
 $hero_secondary_button = get_sub_field( 'hero_secondary_button' );
+$hero_icons = get_sub_field( 'hero_icons' );
+$block_anchor = sanitize_title( (string) get_sub_field( 'block_anchor' ) );
 
 if ( empty( $hero_title ) ) {
 	return;
@@ -26,7 +28,7 @@ if ( $background_url ) {
 }
 ?>
 
-<section class="hero-block position-relative overflow-hidden d-flex align-items-center min-vh-100 text-white" <?php echo $hero_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<section<?php if ( $block_anchor ) : ?> id="<?php echo esc_attr( $block_anchor ); ?>"<?php endif; ?> class="flexible-block hero-block position-relative overflow-hidden d-flex align-items-center min-vh-100 text-white" data-header-theme="dark" <?php echo $hero_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(17, 17, 17, 0.25);"></div>
 	<div class="container position-relative z-1 py-5">
 		<div class="row align-items-center min-vh-100 py-5">
@@ -47,6 +49,51 @@ if ( $background_url ) {
 						</a>
 					<?php endif; ?>
 				</div>
+
+				<?php if ( $hero_icons ) : ?>
+					<ul class="hero-icons d-flex align-items-center flex-wrap gap-3 mt-4 mb-0 list-unstyled">
+						<?php foreach ( $hero_icons as $hero_icon ) : ?>
+							<?php
+							$hero_icon_image = isset( $hero_icon['hero_icon_image'] ) ? $hero_icon['hero_icon_image'] : array();
+							$hero_icon_link = isset( $hero_icon['hero_icon_link'] ) ? $hero_icon['hero_icon_link'] : array();
+							$hero_icon_image_id = ! empty( $hero_icon_image['ID'] ) ? (int) $hero_icon_image['ID'] : 0;
+							$hero_icon_target = ! empty( $hero_icon_link['target'] ) ? $hero_icon_link['target'] : '_self';
+
+							if ( ! $hero_icon_image_id ) {
+								continue;
+							}
+							?>
+							<li class="hero-icons__item">
+								<?php if ( ! empty( $hero_icon_link['url'] ) ) : ?>
+									<a
+										class="hero-icons__link"
+										href="<?php echo esc_url( $hero_icon_link['url'] ); ?>"
+										target="<?php echo esc_attr( $hero_icon_target ); ?>"
+										<?php echo ! empty( $hero_icon_link['title'] ) ? 'aria-label="' . esc_attr( $hero_icon_link['title'] ) . '"' : ''; ?>
+										<?php echo '_blank' === $hero_icon_target ? 'rel="noopener noreferrer"' : ''; ?>
+									>
+								<?php else : ?>
+									<span class="hero-icons__icon">
+								<?php endif; ?>
+
+									<?php
+									echo wp_get_attachment_image(
+										$hero_icon_image_id,
+										'thumbnail',
+										false,
+										array( 'class' => 'hero-icons__image' )
+									);
+									?>
+
+								<?php if ( ! empty( $hero_icon_link['url'] ) ) : ?>
+									</a>
+								<?php else : ?>
+									</span>
+								<?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

@@ -17,6 +17,15 @@
           "display": "block",
           "sub_fields": [
             {
+              "key": "field_hero_anchor_20260706",
+              "label": "Anchor ID",
+              "name": "block_anchor",
+              "type": "text",
+              "instructions": "Inserisci un identificativo univoco senza #, ad esempio: home.",
+              "required": 1,
+              "prepend": "#"
+            },
+            {
               "key": "field_686f44a0d0f12",
               "label": "Titolo",
               "name": "hero_title",
@@ -54,13 +63,258 @@
               "name": "hero_secondary_button",
               "type": "link",
               "instructions": "Link del secondo pulsante."
+            },
+            {
+              "key": "field_hero_icons_20260706",
+              "label": "Icone",
+              "name": "hero_icons",
+              "type": "repeater",
+              "instructions": "Aggiungi icone con link da mostrare sotto i pulsanti.",
+              "required": 0,
+              "layout": "table",
+              "button_label": "Aggiungi icona",
+              "min": 0,
+              "max": 0,
+              "sub_fields": [
+                {
+                  "key": "field_hero_icon_image_20260706",
+                  "label": "Icona",
+                  "name": "hero_icon_image",
+                  "type": "image",
+                  "instructions": "Carica o seleziona l'icona.",
+                  "required": 1,
+                  "return_format": "array",
+                  "preview_size": "thumbnail",
+                  "parent_repeater": "field_hero_icons_20260706"
+                },
+                {
+                  "key": "field_hero_icon_link_20260706",
+                  "label": "Link",
+                  "name": "hero_icon_link",
+                  "type": "link",
+                  "instructions": "Destinazione opzionale dell'icona.",
+                  "required": 0,
+                  "return_format": "array",
+                  "parent_repeater": "field_hero_icons_20260706"
+                }
+              ]
+            }
+          ]
+        },
+        "layout_skills_20260706": {
+          "key": "layout_skills_20260706",
+          "name": "skills",
+          "label": "Competenze",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_skills_anchor_20260706",
+              "label": "Anchor ID",
+              "name": "block_anchor",
+              "type": "text",
+              "instructions": "Inserisci un identificativo univoco senza #, ad esempio: competenze.",
+              "required": 1,
+              "prepend": "#"
+            },
+            {
+              "key": "field_skills_title_20260706",
+              "label": "Titolo",
+              "name": "skills_title",
+              "type": "text",
+              "instructions": "Titolo della sezione competenze.",
+              "required": 1
+            },
+            {
+              "key": "field_skills_items_20260706",
+              "label": "Competenze",
+              "name": "skills_items",
+              "type": "repeater",
+              "instructions": "Aggiungi le competenze da mostrare nella griglia.",
+              "required": 0,
+              "layout": "block",
+              "button_label": "Aggiungi competenza",
+              "min": 0,
+              "max": 0,
+              "sub_fields": [
+                {
+                  "key": "field_skill_image_20260706",
+                  "label": "Immagine",
+                  "name": "skill_image",
+                  "type": "image",
+                  "instructions": "Immagine o logo della competenza.",
+                  "required": 1,
+                  "return_format": "array",
+                  "preview_size": "medium",
+                  "parent_repeater": "field_skills_items_20260706"
+                },
+                {
+                  "key": "field_skill_text_20260706",
+                  "label": "Testo",
+                  "name": "skill_text",
+                  "type": "text",
+                  "instructions": "Nome della competenza.",
+                  "required": 1,
+                  "parent_repeater": "field_skills_items_20260706"
+                }
+              ]
+            }
+          ]
+        },
+        "layout_text_image_20260706": {
+          "key": "layout_text_image_20260706",
+          "name": "text_image",
+          "label": "Testo e immagine",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_text_image_anchor_20260706",
+              "label": "Anchor ID",
+              "name": "block_anchor",
+              "type": "text",
+              "instructions": "Inserisci un identificativo univoco senza #, ad esempio: chi-sono.",
+              "required": 1,
+              "prepend": "#"
+            },
+            {
+              "key": "field_text_image_title_20260706",
+              "label": "Titolo",
+              "name": "text_image_title",
+              "type": "text",
+              "instructions": "Titolo del blocco.",
+              "required": 1
+            },
+            {
+              "key": "field_text_image_description_20260706",
+              "label": "Descrizione",
+              "name": "text_image_description",
+              "type": "wysiwyg",
+              "instructions": "Testo descrittivo del blocco.",
+              "required": 0,
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0,
+              "delay": 0
+            },
+            {
+              "key": "field_text_image_button_20260706",
+              "label": "Pulsante",
+              "name": "text_image_button",
+              "type": "link",
+              "instructions": "Testo e destinazione del pulsante.",
+              "required": 0,
+              "return_format": "array"
+            },
+            {
+              "key": "field_text_image_image_20260706",
+              "label": "Immagine",
+              "name": "text_image_image",
+              "type": "image",
+              "instructions": "Immagine mostrata nella colonna destra.",
+              "required": 1,
+              "return_format": "array",
+              "preview_size": "medium"
+            }
+          ]
+        },
+        "layout_contact_20260706": {
+          "key": "layout_contact_20260706",
+          "name": "contact",
+          "label": "Contatti",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_contact_anchor_20260706",
+              "label": "Anchor ID",
+              "name": "block_anchor",
+              "type": "text",
+              "instructions": "Inserisci un identificativo univoco senza #, ad esempio: contatti.",
+              "required": 1,
+              "prepend": "#"
+            },
+            {
+              "key": "field_contact_title_20260706",
+              "label": "Titolo",
+              "name": "contact_title",
+              "type": "text",
+              "instructions": "Titolo del blocco contatti.",
+              "required": 1
+            },
+            {
+              "key": "field_contact_details_20260706",
+              "label": "Recapiti",
+              "name": "contact_details",
+              "type": "repeater",
+              "instructions": "Aggiungi email, telefono o altri recapiti sotto il titolo.",
+              "required": 0,
+              "layout": "block",
+              "button_label": "Aggiungi recapito",
+              "min": 0,
+              "max": 0,
+              "sub_fields": [
+                {
+                  "key": "field_contact_detail_label_20260706",
+                  "label": "Etichetta",
+                  "name": "contact_detail_label",
+                  "type": "text",
+                  "instructions": "Esempio: Email.",
+                  "required": 1,
+                  "parent_repeater": "field_contact_details_20260706"
+                },
+                {
+                  "key": "field_contact_detail_value_20260706",
+                  "label": "Valore testuale",
+                  "name": "contact_detail_value",
+                  "type": "text",
+                  "instructions": "Per recapiti senza link, ad esempio: Napoli e remoto.",
+                  "required": 0,
+                  "parent_repeater": "field_contact_details_20260706"
+                },
+                {
+                  "key": "field_contact_detail_link_20260706",
+                  "label": "Recapito e link",
+                  "name": "contact_detail_link",
+                  "type": "link",
+                  "instructions": "Opzionale. Usalo per email, telefono o altri recapiti cliccabili.",
+                  "required": 0,
+                  "return_format": "array",
+                  "parent_repeater": "field_contact_details_20260706"
+                }
+              ]
+            },
+            {
+              "key": "field_contact_description_20260706",
+              "label": "Descrizione",
+              "name": "contact_description",
+              "type": "wysiwyg",
+              "instructions": "Testo opzionale sotto i recapiti.",
+              "required": 0,
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0,
+              "delay": 0
+            },
+            {
+              "key": "field_contact_form_20260706",
+              "label": "Form",
+              "name": "contact_form",
+              "type": "post_object",
+              "instructions": "Seleziona il form creato con Contact Form 7.",
+              "required": 1,
+              "post_type": [
+                "wpcf7_contact_form"
+              ],
+              "taxonomy": "",
+              "allow_null": 0,
+              "multiple": 0,
+              "return_format": "id",
+              "ui": 1
             }
           ]
         }
       },
       "button_label": "Aggiungi blocco",
       "min": 0,
-      "max": 1
+      "max": 0
     }
   ],
   "location": [
@@ -79,6 +333,6 @@
   "instruction_placement": "label",
   "hide_on_screen": [],
   "active": 1,
-  "description": "Blocco Hero per le pagine.",
-  "modified": 1710000000
+  "description": "Blocchi flessibili per i contenuti delle pagine.",
+  "modified": 1783301000
 }

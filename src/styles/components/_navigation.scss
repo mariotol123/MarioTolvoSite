@@ -16,12 +16,22 @@
 .main-navigation .nav a,
 .main-navigation .menu a {
 	position: relative;
-	color: #fff;
+	color: transparent;
 	font-weight: 600;
 	padding: 0.25rem 0.5rem;
 	display: inline-block;
+	background: linear-gradient(
+		180deg,
+		var(--navigation-color-start, #fff) 0%,
+		var(--navigation-color-start, #fff) var(--navigation-color-split, 100%),
+		var(--navigation-color-end, #fff) var(--navigation-color-split, 100%),
+		var(--navigation-color-end, #fff) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
 	text-decoration: none;
 	text-transform: uppercase;
+	-webkit-text-fill-color: transparent;
 }
 
 .main-navigation .nav a::after,
@@ -30,7 +40,13 @@
 	right: 0.5rem;
 	left: 0.5rem;
 	height: 3px;
-	background-color: currentColor;
+	background: linear-gradient(
+		180deg,
+		var(--navigation-underline-color-start, #fff) 0%,
+		var(--navigation-underline-color-start, #fff) var(--navigation-underline-color-split, 100%),
+		var(--navigation-underline-color-end, #fff) var(--navigation-underline-color-split, 100%),
+		var(--navigation-underline-color-end, #fff) 100%
+	);
 	content: '';
 	transform: scaleX(0);
 	transform-origin: left center;
@@ -48,7 +64,7 @@
 .main-navigation .menu a:hover,
 .main-navigation .menu a:focus-visible,
 .main-navigation .menu .current-menu-item a {
-	color: #fff;
+	color: transparent;
 }
 
 .main-navigation .nav a:hover::after,

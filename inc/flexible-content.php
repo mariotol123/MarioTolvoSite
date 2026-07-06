@@ -21,6 +21,12 @@ if ( ! function_exists( 'mario_tolvo_portfolio_render_flexible_content' ) ) {
 
 				if ( 'hero' === $layout ) {
 					get_template_part( 'template-parts/blocks/hero' );
+				} elseif ( 'skills' === $layout ) {
+					get_template_part( 'template-parts/blocks/skills' );
+				} elseif ( 'text_image' === $layout ) {
+					get_template_part( 'template-parts/blocks/text-image' );
+				} elseif ( 'contact' === $layout ) {
+					get_template_part( 'template-parts/blocks/contact' );
 				}
 			}
 		}

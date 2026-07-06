@@ -1,0 +1,88 @@
+.contact-block {
+	background-color: #fff;
+}
+
+.contact-block__title {
+	position: relative;
+	padding-bottom: 1rem;
+}
+
+.contact-block__title::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 4rem;
+	height: 3px;
+	background-color: #000;
+	content: '';
+}
+
+.contact-block__details {
+	display: grid;
+	gap: 1rem;
+}
+
+.contact-block__detail {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.contact-block__detail-label {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.contact-block__detail-link,
+.contact-block__detail-value {
+	color: #000;
+	font-size: 1.125rem;
+}
+
+.contact-block__detail-link {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.contact-block__description > :last-child,
+.contact-block__form .wpcf7-form > :last-child {
+	margin-bottom: 0;
+}
+
+.contact-block__form label,
+.contact-block__form .wpcf7-form-control-wrap,
+.contact-block__form input:not([type='submit']),
+.contact-block__form textarea {
+	display: block;
+	width: 100%;
+}
+
+.contact-block__form input:not([type='submit']),
+.contact-block__form textarea {
+	padding: 0.75rem;
+	border: 2px solid #000;
+	border-radius: 0;
+	background-color: transparent;
+}
+
+.contact-block__form textarea {
+	min-height: 10rem;
+	resize: vertical;
+}
+
+.contact-block__form .wpcf7-submit {
+	padding: 0.625rem 1.25rem;
+	border: 3px solid #000;
+	background-color: $theme-accent;
+	color: #000;
+	font-weight: 600;
+	text-transform: uppercase;
+	transition: background-color 0.2s ease;
+}
+
+.contact-block__form .wpcf7-submit:hover,
+.contact-block__form .wpcf7-submit:focus-visible {
+	background-color: $theme-accent-strong;
+}

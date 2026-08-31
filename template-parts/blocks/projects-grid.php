@@ -8,6 +8,7 @@
 $block_anchor = sanitize_title( (string) get_sub_field( 'block_anchor' ) );
 $title        = get_sub_field( 'projects_grid_title' );
 $subtitle     = get_sub_field( 'projects_grid_subtitle' );
+$button       = get_sub_field( 'projects_grid_button' );
 
 if ( empty( $title ) ) {
 	return;
@@ -145,6 +146,15 @@ foreach ( $filter_taxonomies as $filter_taxonomy ) {
 			</div>
 		<?php else : ?>
 			<p class="projects-grid__empty mb-0"><?php echo esc_html__( 'Nessun progetto disponibile.', 'mario_tolvo_portfolio' ); ?></p>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $button['url'] ) && ! empty( $button['title'] ) ) : ?>
+			<?php $button_target = ! empty( $button['target'] ) ? $button['target'] : '_self'; ?>
+			<div class="projects-grid__cta mt-4 mt-lg-5 text-center">
+				<a class="btn btn-primary btn-lg text-uppercase js-scramble-button" href="<?php echo esc_url( $button['url'] ); ?>" target="<?php echo esc_attr( $button_target ); ?>"<?php echo '_blank' === $button_target ? ' rel="noopener noreferrer"' : ''; ?>>
+					<?php echo esc_html( $button['title'] ); ?>
+				</a>
+			</div>
 		<?php endif; ?>
 	</div>
 </section>

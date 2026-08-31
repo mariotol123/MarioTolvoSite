@@ -1,0 +1,119 @@
+.projects-archive .projects-grid {
+	background-color: transparent;
+}
+
+.project-detail__hero {
+	background-color: var(--theme-surface);
+}
+
+.project-detail__back,
+.project-detail__eyebrow {
+	font-size: .8rem;
+	font-weight: 800;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.project-detail__eyebrow {
+	color: var(--theme-muted);
+}
+
+.project-detail__intro {
+	max-width: 42rem;
+	font-size: clamp(1.125rem, 1rem + .5vw, 1.35rem);
+}
+
+.project-detail__metadata {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+	max-width: 45rem;
+}
+
+.project-detail__metadata dt,
+.project-detail__sidebar h2 {
+	margin-bottom: .25rem;
+	font-size: .75rem;
+	font-weight: 800;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.project-detail__metadata dd {
+	margin: 0;
+}
+
+.project-detail__featured-image,
+.project-detail__gallery-image {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.project-detail__featured-image {
+	max-height: 48rem;
+	object-fit: cover;
+}
+
+.project-detail__section + .project-detail__section {
+	margin-top: 3rem;
+}
+
+.project-detail__copy,
+.project-detail__section p {
+	font-size: 1.125rem;
+}
+
+.project-detail__sidebar {
+	display: grid;
+	gap: 2.25rem;
+	padding: 1.75rem;
+	background: var(--theme-surface);
+	border: 1px solid var(--theme-border);
+	border-radius: var(--theme-radius);
+}
+
+.project-detail__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.project-detail__tags li {
+	padding: .35rem .55rem;
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	border: 1px solid var(--theme-border);
+	border-radius: 999px;
+}
+
+.project-detail__contribution {
+	padding-left: 1.1rem;
+}
+
+.project-detail__contribution li + li {
+	margin-top: .45rem;
+}
+
+.project-detail__links {
+	display: grid;
+	gap: .75rem;
+}
+
+.project-detail__links a {
+	font-weight: 700;
+	text-decoration: underline;
+	text-underline-offset: .2em;
+}
+
+.project-detail__gallery figure {
+	margin: 0;
+}
+
+.project-detail__gallery figcaption {
+	margin-top: .75rem;
+	color: var(--theme-muted);
+	font-size: .875rem;
+}

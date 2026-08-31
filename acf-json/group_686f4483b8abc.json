@@ -395,6 +395,15 @@
               "instructions": "Testo introduttivo sotto il titolo.",
               "required": 0,
               "rows": 3
+            },
+            {
+              "key": "field_projects_grid_button_20260831",
+              "label": "Pulsante",
+              "name": "projects_grid_button",
+              "type": "link",
+              "instructions": "Pulsante mostrato al termine della griglia progetti.",
+              "required": 0,
+              "return_format": "array"
             }
           ]
         }

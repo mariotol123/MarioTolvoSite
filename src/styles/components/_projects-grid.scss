@@ -161,3 +161,16 @@
 .project-card__link:focus-visible::after {
 	transform: scaleX(0.55);
 }
+
+.projects-grid__cta .btn {
+	border: 3px solid #000;
+	background-color: #000;
+	color: #fff;
+}
+
+.projects-grid__cta .btn:hover,
+.projects-grid__cta .btn:focus-visible {
+	border-color: #000;
+	background-color: #1f1f1f;
+	color: #fff;
+}

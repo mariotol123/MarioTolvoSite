@@ -27,6 +27,10 @@ if ( ! function_exists( 'mario_tolvo_portfolio_render_flexible_content' ) ) {
 					get_template_part( 'template-parts/blocks/text-image' );
 				} elseif ( 'contact' === $layout ) {
 					get_template_part( 'template-parts/blocks/contact' );
+				} elseif ( 'cta_banner' === $layout ) {
+					get_template_part( 'template-parts/blocks/cta-banner' );
+				} elseif ( 'projects_grid' === $layout ) {
+					get_template_part( 'template-parts/blocks/projects-grid' );
 				}
 			}
 		}

@@ -1,13 +1,65 @@
 .hero-block {
 	min-height: 100vh;
 	background-color: #111111;
+}
+
+.hero-block__background {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	animation: hero-background-zoom 1.5s ease-out both;
+	transform-origin: center;
+	will-change: transform;
+}
+
+.hero-block__overlay {
+	background:
+		linear-gradient(0deg, rgba(17, 17, 17, 0.42), rgba(17, 17, 17, 0.42)),
+		rgba(17, 17, 17, 0.12);
+}
+
+.hero-block__title-word {
+	display: inline-block;
+	opacity: 0;
+	transform: translateY(1.2rem);
+	animation: hero-fade-up 0.75s ease-out forwards;
+	animation-delay: calc(0.28s + (var(--hero-word-index, 0) * 0.12s));
+}
+
+.hero-block__subtitle {
+	opacity: 0;
+	transform: translateY(1rem);
+	animation: hero-fade-up 0.75s ease-out forwards;
+	animation-delay: 0.85s;
+}
+
+.hero-block__button {
+	opacity: 0;
+	transform: translateY(1rem);
+	animation: hero-fade-up 0.75s ease-out forwards;
+}
+
+.hero-block__button:nth-child(1) {
+	animation-delay: 1.05s;
+}
+
+.hero-block__button:nth-child(2) {
+	animation-delay: 1.2s;
+}
+
+.hero-block__button:nth-child(3) {
+	animation-delay: 1.35s;
 }
 
 .hero-block .btn {
 	min-width: 11rem;
+}
+
+.hero-icons {
+	opacity: 0;
+	transform: translateY(1rem);
+	animation: hero-fade-up 0.75s ease-out forwards;
+	animation-delay: 1.45s;
 }
 
 .hero-icons__link,
@@ -72,4 +124,33 @@
 .scramble-button__letter.is-scrambling {
 	font-family: 'Stray', sans-serif;
 	font-weight: 400;
+}
+
+@keyframes hero-background-zoom {
+	from {
+		transform: scale(1.06);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes hero-fade-up {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-block__background,
+	.hero-block__title-word,
+	.hero-block__subtitle,
+	.hero-block__button,
+	.hero-icons {
+		animation: none;
+		opacity: 1;
+		transform: none;
+	}
 }

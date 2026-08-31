@@ -310,6 +310,93 @@
               "ui": 1
             }
           ]
+        },
+        "layout_cta_banner_20260706": {
+          "key": "layout_cta_banner_20260706",
+          "name": "cta_banner",
+          "label": "Banner CTA",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_cta_banner_anchor_20260706",
+              "label": "Anchor ID",
+              "name": "block_anchor",
+              "type": "text",
+              "instructions": "Inserisci un identificativo univoco senza #, ad esempio: call-to-action.",
+              "required": 1,
+              "prepend": "#"
+            },
+            {
+              "key": "field_cta_banner_image_20260706",
+              "label": "Immagine di sfondo",
+              "name": "cta_banner_image",
+              "type": "image",
+              "instructions": "Immagine mostrata come sfondo del blocco.",
+              "required": 1,
+              "return_format": "array",
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_cta_banner_title_20260706",
+              "label": "Titolo",
+              "name": "cta_banner_title",
+              "type": "text",
+              "instructions": "Titolo principale del banner.",
+              "required": 1
+            },
+            {
+              "key": "field_cta_banner_subtitle_20260706",
+              "label": "Sottotitolo",
+              "name": "cta_banner_subtitle",
+              "type": "textarea",
+              "instructions": "Testo sotto il titolo.",
+              "required": 0,
+              "rows": 3
+            },
+            {
+              "key": "field_cta_banner_button_20260706",
+              "label": "Pulsante",
+              "name": "cta_banner_button",
+              "type": "link",
+              "instructions": "Testo e destinazione del pulsante.",
+              "required": 0,
+              "return_format": "array"
+            }
+          ]
+        },
+        "layout_projects_grid_20260708": {
+          "key": "layout_projects_grid_20260708",
+          "name": "projects_grid",
+          "label": "Griglia progetti",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_projects_grid_anchor_20260708",
+              "label": "Anchor ID",
+              "name": "block_anchor",
+              "type": "text",
+              "instructions": "Inserisci un identificativo univoco senza #, ad esempio: progetti.",
+              "required": 1,
+              "prepend": "#"
+            },
+            {
+              "key": "field_projects_grid_title_20260708",
+              "label": "Titolo",
+              "name": "projects_grid_title",
+              "type": "text",
+              "instructions": "Titolo del blocco progetti.",
+              "required": 1
+            },
+            {
+              "key": "field_projects_grid_subtitle_20260708",
+              "label": "Sottotitolo",
+              "name": "projects_grid_subtitle",
+              "type": "textarea",
+              "instructions": "Testo introduttivo sotto il titolo.",
+              "required": 0,
+              "rows": 3
+            }
+          ]
         }
       },
       "button_label": "Aggiungi blocco",
@@ -334,5 +421,5 @@
   "hide_on_screen": [],
   "active": 1,
   "description": "Blocchi flessibili per i contenuti delle pagine.",
-  "modified": 1783301000
+  "modified": 1783302000
 }

@@ -1,0 +1,15 @@
+.cta-banner {
+	min-height: 65vh;
+	background-color: #111;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.cta-banner__overlay {
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.48) 55%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.cta-banner .btn {
+	min-width: 11rem;
+}

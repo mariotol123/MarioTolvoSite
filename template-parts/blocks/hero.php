@@ -24,27 +24,36 @@ if ( ! empty( $hero_background_image['url'] ) ) {
 
 $hero_style = '';
 if ( $background_url ) {
-	$hero_style = 'style="background-image: linear-gradient(0deg, rgba(17, 17, 17, 0.55), rgba(17, 17, 17, 0.55)), url(' . esc_url( $background_url ) . ');"';
+	$hero_style = 'style="background-image: url(' . esc_url( $background_url ) . ');"';
 }
+
+$hero_title_words = preg_split( '/\s+/', trim( (string) $hero_title ) );
 ?>
 
-<section<?php if ( $block_anchor ) : ?> id="<?php echo esc_attr( $block_anchor ); ?>"<?php endif; ?> class="flexible-block hero-block position-relative overflow-hidden d-flex align-items-center min-vh-100 text-white" data-header-theme="dark" <?php echo $hero_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(17, 17, 17, 0.25);"></div>
+<section<?php if ( $block_anchor ) : ?> id="<?php echo esc_attr( $block_anchor ); ?>"<?php endif; ?> class="flexible-block hero-block position-relative overflow-hidden d-flex align-items-center min-vh-100 text-white" data-header-theme="dark">
+	<?php if ( $background_url ) : ?>
+		<div class="hero-block__background position-absolute top-0 start-0 w-100 h-100" <?php echo $hero_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>></div>
+	<?php endif; ?>
+	<div class="hero-block__overlay position-absolute top-0 start-0 w-100 h-100"></div>
 	<div class="container position-relative z-1 py-5">
 		<div class="row align-items-center min-vh-100 py-5">
 			<div class="col-12 col-lg-6">
-				<h1 class="display-4 fw-bold mb-3 text-white"><?php echo esc_html( $hero_title ); ?></h1>
+				<h1 class="hero-block__title display-4 fw-bold mb-3 text-white" aria-label="<?php echo esc_attr( $hero_title ); ?>">
+					<?php foreach ( $hero_title_words as $word_index => $hero_title_word ) : ?>
+						<span class="hero-block__title-word" style="--hero-word-index: <?php echo esc_attr( (string) $word_index ); ?>;"><?php echo esc_html( $hero_title_word ); ?></span>
+					<?php endforeach; ?>
+				</h1>
 				<?php if ( $hero_text ) : ?>
-					<p class="lead mb-4 h4 text-white"><?php echo esc_html( $hero_text ); ?></p>
+					<p class="hero-block__subtitle lead mb-4 h4 text-white"><?php echo esc_html( $hero_text ); ?></p>
 				<?php endif; ?>
-				<div class="d-flex flex-column flex-sm-row gap-3">
+				<div class="hero-block__buttons d-flex flex-column flex-sm-row gap-3">
 					<?php if ( $hero_primary_button ) : ?>
-						<a class="btn btn-primary btn-lg text-uppercase js-scramble-button" href="<?php echo esc_url( $hero_primary_button['url'] ); ?>" target="<?php echo esc_attr( $hero_primary_button['target'] ? $hero_primary_button['target'] : '_self' ); ?>">
+						<a class="hero-block__button btn btn-primary btn-lg text-uppercase js-scramble-button" href="<?php echo esc_url( $hero_primary_button['url'] ); ?>" target="<?php echo esc_attr( $hero_primary_button['target'] ? $hero_primary_button['target'] : '_self' ); ?>">
 							<?php echo esc_html( $hero_primary_button['title'] ); ?>
 						</a>
 					<?php endif; ?>
 					<?php if ( $hero_secondary_button ) : ?>
-						<a class="btn btn-outline-light btn-lg text-uppercase js-scramble-button" href="<?php echo esc_url( $hero_secondary_button['url'] ); ?>" target="<?php echo esc_attr( $hero_secondary_button['target'] ? $hero_secondary_button['target'] : '_self' ); ?>">
+						<a class="hero-block__button btn btn-outline-light btn-lg text-uppercase js-scramble-button" href="<?php echo esc_url( $hero_secondary_button['url'] ); ?>" target="<?php echo esc_attr( $hero_secondary_button['target'] ? $hero_secondary_button['target'] : '_self' ); ?>">
 							<?php echo esc_html( $hero_secondary_button['title'] ); ?>
 						</a>
 					<?php endif; ?>

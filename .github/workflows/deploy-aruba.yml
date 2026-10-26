@@ -38,6 +38,10 @@ jobs:
             --exclude='src/' \
             --exclude='package*.json' \
             --exclude='vite.config.js' \
+            --exclude='github/' \
+            --exclude='.eslintrc' \
+            --exclude='.stylelintrc.json' \
+            --exclude='phpcs.xml.dist' \
             --exclude='*.md'
 
       - name: Deploy test

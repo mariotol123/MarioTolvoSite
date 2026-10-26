@@ -44,9 +44,9 @@ jobs:
             --exclude='phpcs.xml.dist' \
             --exclude='*.md'
 
-      - name: Test deploy Aruba
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
+          - name: Deploy tema WordPress su Aruba
+          uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+          with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
@@ -54,5 +54,5 @@ jobs:
           port: 21
           local-dir: ./deploy-theme/
           server-dir: ${{ vars.ARUBA_THEME_DIR }}
-          dry-run: true
+          dry-run: false
           dangerous-clean-slate: false

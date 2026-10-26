@@ -38,7 +38,7 @@ $hero_title_words = preg_split( '/\s+/', trim( (string) $hero_title ) );
 	<div class="container position-relative z-1 py-5">
 		<div class="row align-items-center min-vh-100 py-5">
 			<div class="col-12 col-lg-6">
-				<h1 class="hero-block__title display-4 fw-bold mb-3 text-white" aria-label="<?php echo esc_attr( $hero_title ); ?>">
+				<h1 class="hero-block__title fw-bold mb-3 text-white" aria-label="<?php echo esc_attr( $hero_title ); ?>">
 					<?php foreach ( $hero_title_words as $word_index => $hero_title_word ) : ?>
 						<span class="hero-block__title-word" style="--hero-word-index: <?php echo esc_attr( (string) $word_index ); ?>;"><?php echo esc_html( $hero_title_word ); ?></span>
 					<?php endforeach; ?>

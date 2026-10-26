@@ -21,7 +21,7 @@ if ( empty( $contact_title ) && ! $contact_form_id ) {
 		<div class="row align-items-start g-5">
 			<div class="col-12 col-lg-5">
 				<?php if ( $contact_title ) : ?>
-					<h2 class="contact-block__title display-5 mb-4">
+					<h2 class="contact-block__title mb-4">
 						<?php echo esc_html( $contact_title ); ?>
 					</h2>
 				<?php endif; ?>

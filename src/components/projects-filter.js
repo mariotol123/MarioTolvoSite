@@ -6,6 +6,31 @@ export function initProjectsFilter() {
 		const filters = section ? Array.from(section.querySelectorAll('[data-project-filter], [data-project-filter-all]')) : [];
 		const cards = Array.from(grid.querySelectorAll('[data-project-card]'));
 		const activeFilters = new Set();
+		const filtersToggle = section?.querySelector('[data-project-filters-toggle]');
+		const extraFilters = filters.filter((filter) => filter.hasAttribute('data-project-filter')).slice(20);
+
+		if (filtersToggle && extraFilters.length) {
+			let expanded = false;
+			const updateFilterVisibility = () => {
+				extraFilters.forEach((filter) => {
+					filter.hidden = !expanded && !activeFilters.has(filter.dataset.projectFilter);
+				});
+				filtersToggle.setAttribute('aria-expanded', String(expanded));
+				filtersToggle.textContent = expanded ? filtersToggle.dataset.labelCollapse : filtersToggle.dataset.labelExpand;
+			};
+
+			filtersToggle.hidden = false;
+			filtersToggle.addEventListener('click', () => {
+				expanded = !expanded;
+				updateFilterVisibility();
+			});
+			section.addEventListener('click', (event) => {
+				if (event.target.closest('[data-project-filter], [data-project-filter-all]')) {
+					updateFilterVisibility();
+				}
+			});
+			updateFilterVisibility();
+		}
 
 		if (!section || !filters.length || !cards.length) {
 			return;

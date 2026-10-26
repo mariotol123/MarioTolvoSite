@@ -108,8 +108,20 @@
 	text-underline-offset: .2em;
 }
 
-.project-detail__gallery figure {
-	margin: 0;
+.project-detail__gallery-grid {
+	column-count: 1;
+	column-gap: 1.5rem;
+
+	@media (min-width: 768px) {
+		column-count: 2;
+	}
+}
+
+.project-detail__gallery-grid figure {
+	display: inline-block;
+	width: 100%;
+	margin: 0 0 1.5rem;
+	break-inside: avoid;
 }
 
 .project-detail__gallery figcaption {

@@ -49,7 +49,7 @@ while ( have_posts() ) :
 			</header>
 
 			<?php if ( ! empty( $hero_image['ID'] ) || has_post_thumbnail() ) : ?>
-				<div class="container"><figure class="project-detail__featured mb-0"><?php if ( ! empty( $hero_image['ID'] ) ) { echo wp_get_attachment_image( (int) $hero_image['ID'], 'full', false, array( 'class' => 'project-detail__featured-image' ) ); } else { the_post_thumbnail( 'full', array( 'class' => 'project-detail__featured-image' ) ); } ?></figure></div>
+				<div class="container pt-5"><figure class="project-detail__featured mb-0"><?php if ( ! empty( $hero_image['ID'] ) ) { echo wp_get_attachment_image( (int) $hero_image['ID'], 'full', false, array( 'class' => 'project-detail__featured-image' ) ); } else { the_post_thumbnail( 'full', array( 'class' => 'project-detail__featured-image' ) ); } ?></figure></div>
 			<?php endif; ?>
 
 			<div class="container py-5 py-lg-6">
@@ -67,7 +67,7 @@ while ( have_posts() ) :
 					</aside>
 				</div>
 
-				<?php if ( $gallery ) : ?><section class="project-detail__gallery mt-5 pt-lg-4"><h2 class="mb-4"><?php esc_html_e( 'Gallery', 'mario_tolvo_portfolio' ); ?></h2><div class="row g-4"><?php foreach ( $gallery as $gallery_item ) : ?><?php if ( ! empty( $gallery_item['image']['ID'] ) ) : ?><figure class="col-12 col-md-6 mb-0"><?php echo wp_get_attachment_image( (int) $gallery_item['image']['ID'], 'large', false, array( 'class' => 'project-detail__gallery-image' ) ); ?><?php if ( ! empty( $gallery_item['caption'] ) ) : ?><figcaption><?php echo esc_html( $gallery_item['caption'] ); ?></figcaption><?php endif; ?></figure><?php endif; ?><?php endforeach; ?></div></section><?php endif; ?>
+				<?php if ( $gallery ) : ?><section class="project-detail__gallery mt-5 pt-lg-4"><h2 class="mb-4"><?php esc_html_e( 'Gallery', 'mario_tolvo_portfolio' ); ?></h2><div class="project-detail__gallery-grid"><?php foreach ( $gallery as $gallery_item ) : ?><?php if ( ! empty( $gallery_item['image']['ID'] ) ) : ?><figure><?php echo wp_get_attachment_image( (int) $gallery_item['image']['ID'], 'large', false, array( 'class' => 'project-detail__gallery-image' ) ); ?><?php if ( ! empty( $gallery_item['caption'] ) ) : ?><figcaption><?php echo esc_html( $gallery_item['caption'] ); ?></figcaption><?php endif; ?></figure><?php endif; ?><?php endforeach; ?></div></section><?php endif; ?>
 			</div>
 		</article>
 	</main>

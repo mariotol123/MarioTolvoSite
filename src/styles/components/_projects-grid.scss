@@ -52,6 +52,14 @@
 	border-color: #000000;
 }
 
+.projects-grid__filter[hidden] {
+	display: none;
+}
+
+.projects-grid__filters-toggle {
+	border-style: dashed;
+}
+
 .project-card {
 	display: flex;
 	flex-direction: column;

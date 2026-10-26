@@ -23,7 +23,7 @@ if ( empty( $text_image_title ) && empty( $text_image_description ) && ! $text_i
 			<div class="col-12 col-lg-6">
 				<div class="text-image-block__content">
 					<?php if ( $text_image_title ) : ?>
-						<h2 class="text-image-block__title display-5 mb-4">
+						<h2 class="text-image-block__title mb-4">
 							<?php echo esc_html( $text_image_title ); ?>
 						</h2>
 					<?php endif; ?>

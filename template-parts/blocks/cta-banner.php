@@ -26,7 +26,7 @@ if ( empty( $cta_banner_title ) ) {
 	<div class="container position-relative z-1 py-5">
 		<div class="row py-lg-5">
 			<div class="col-12 col-lg-7">
-				<h2 class="cta-banner__title display-4 text-white mb-3">
+				<h2 class="cta-banner__title text-white mb-3">
 					<?php echo esc_html( $cta_banner_title ); ?>
 				</h2>
 

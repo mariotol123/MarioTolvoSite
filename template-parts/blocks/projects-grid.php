@@ -59,6 +59,9 @@ foreach ( $filter_taxonomies as $filter_taxonomy ) {
 						<?php echo esc_html( $filter_term->name ); ?>
 					</button>
 				<?php endforeach; ?>
+					<?php if ( count( $filter_terms ) > 20 ) : ?>
+						<button class="projects-grid__filter projects-grid__filters-toggle" type="button" data-project-filters-toggle data-label-expand="<?php esc_attr_e( 'Mostra tutte', 'mario_tolvo_portfolio' ); ?>" data-label-collapse="<?php esc_attr_e( 'Mostra meno', 'mario_tolvo_portfolio' ); ?>" aria-expanded="false" hidden><?php esc_html_e( 'Mostra tutte', 'mario_tolvo_portfolio' ); ?></button>
+					<?php endif; ?>
 			</div>
 		<?php endif; ?>
 

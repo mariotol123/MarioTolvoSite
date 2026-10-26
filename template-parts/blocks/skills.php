@@ -19,7 +19,7 @@ if ( empty( $skills_title ) && empty( $skills_items ) ) {
 <section<?php if ( $block_anchor ) : ?> id="<?php echo esc_attr( $block_anchor ); ?>"<?php endif; ?> class="flexible-block skills-block py-5 text-white" data-header-theme="dark">
 	<div class="container py-lg-5">
 		<?php if ( $skills_title ) : ?>
-			<h2 class="skills-block__title display-5 text-white mb-5">
+			<h2 class="skills-block__title text-white mb-5">
 				<?php echo esc_html( $skills_title ); ?>
 			</h2>
 		<?php endif; ?>

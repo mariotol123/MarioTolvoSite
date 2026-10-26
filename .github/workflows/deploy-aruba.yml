@@ -44,7 +44,7 @@ jobs:
             --exclude='phpcs.xml.dist' \
             --exclude='*.md'
 
-      - name: Deploy test
+      - name: Test deploy Aruba
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -55,3 +55,4 @@ jobs:
           local-dir: ./deploy-theme/
           server-dir: ${{ vars.ARUBA_THEME_DIR }}
           dry-run: true
+          dangerous-clean-slate: false

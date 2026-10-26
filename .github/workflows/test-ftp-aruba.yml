@@ -1,28 +1,29 @@
 
-name: Test FTP Aruba
+name: Diagnostica FTP Aruba
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-ftp:
+  diagnostica:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Prepare test file
-        run: |
-          mkdir -p ftp-test
-          echo "Connessione GitHub Aruba OK" > ftp-test/test.txt
+      - name: Installa client FTP
+        run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Test real FTP upload
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./ftp-test/
-          server-dir: ./wp-content/themes/mt-deploy-test/
-          dry-run: false
-          dangerous-clean-slate: false
+      - name: Verifica directory FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_SERVER }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USER","$FTP_PASS" \
+            -e "
+              set ftp:ssl-force true;
+              set ftp:ssl-protect-data true;
+              set ssl:verify-certificate true;
+              pwd;
+              cls -l;
+              quit
+            " "ftp://$FTP_HOST:21"

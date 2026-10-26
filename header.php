@@ -29,37 +29,25 @@
 		<div class="container">
 			<div class="row align-items-center g-3">
 				<div class="col-12 col-lg-4">
-					<div class="site-branding d-flex align-items-center gap-3">
-						<?php
-						if ( has_custom_logo() ) {
-							the_custom_logo();
-						} else {
-							$site_logo_id = (int) get_option( 'site_logo' );
+					
+<div class="site-branding d-flex align-items-center gap-3">
+    <a
+        href="<?php echo esc_url( home_url( '/' ) ); ?>"
+        class="custom-logo-link mt-header-logo"
+        rel="home"
+        aria-label="<?php echo esc_attr( 'Vai alla homepage di ' . get_bloginfo( 'name' ) ); ?>"
+    >
+        <img
+            src="<?php echo esc_url( get_template_directory_uri() . '/assets/logos/mt-favicon/favicon-512.png' ); ?>"
+            alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+            class="custom-logo mt-header-logo__image"
+            width="52"
+            height="52"
+            decoding="async"
+        >
+    </a>
+</div>
 
-							if ( ! $site_logo_id ) {
-								$site_logo_id = (int) get_option( 'site_icon' );
-							}
-
-							if ( $site_logo_id ) {
-								?>
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home">
-									<?php
-									echo wp_get_attachment_image(
-										$site_logo_id,
-										'full',
-										false,
-										array(
-											'class' => 'custom-logo',
-											'alt'   => get_bloginfo( 'name' ),
-										)
-									);
-									?>
-								</a>
-								<?php
-							}
-						}
-						?>
-					</div>
 				</div>
 
 				<div class="col-12 col-lg-8">

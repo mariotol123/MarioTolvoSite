@@ -143,3 +143,45 @@ a:focus {
 	width: 1px;
 	word-wrap: normal !important;
 }
+
+
+/* Logo MT - Header */
+
+.mt-header-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 0;
+    text-decoration: none;
+}
+
+.mt-header-logo__image {
+    display: block;
+    width: 52px;
+    height: 52px;
+    max-width: none;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+@media (hover: hover) {
+    .mt-header-logo:hover .mt-header-logo__image {
+        transform: scale(1.06);
+    }
+}
+
+@media (max-width: 767px) {
+    .mt-header-logo__image {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mt-header-logo__image {
+        transition: none;
+    }
+}

@@ -1,60 +1,28 @@
 
-name: Diagnostica FTP Aruba
+name: Test scrittura FTP Aruba
 
 on:
   workflow_dispatch:
 
 jobs:
-  diagnostica:
+  test-ftp:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Verifica FTP e cartelle
-        env:
-          FTP_HOST: ${{ secrets.FTP_SERVER }}
-          FTP_USER: ${{ secrets.FTP_USERNAME }}
-          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+      - name: Prepara file di test
         run: |
-          python - <<'PY'
-          import os
-          from ftplib import FTP_TLS
+          mkdir -p ftp-test
+          echo "Test GitHub Aruba OK" > ftp-test/test.txt
 
-          ftp = FTP_TLS(timeout=20)
-          try:
-              ftp.connect(os.environ["FTP_HOST"], 21)
-              ftp.login(
-                  os.environ["FTP_USER"],
-                  os.environ["FTP_PASS"]
-              )
-              ftp.prot_p()
-
-              print("CONNESSIONE RIUSCITA")
-              print("Directory FTP iniziale:", ftp.pwd())
-
-              print("Cartelle nella directory iniziale:")
-              for name in ftp.nlst()[:50]:
-                  print(" -", name)
-
-              paths = [
-                  "/wp-content/themes/mario_tolvo_portfolio",
-                  "/www.mariotolvosite.it/wp-content/themes/mario_tolvo_portfolio"
-              ]
-
-              for path in paths:
-                  try:
-                      ftp.cwd(path)
-                      print("PERCORSO ACCESSIBILE:", ftp.pwd())
-                  except Exception as e:
-                      print("PERCORSO NON ACCESSIBILE:",
-                            path, type(e).__name__)
-
-          except Exception as e:
-              print("ERRORE:", type(e).__name__,
-                    str(e)[:200])
-              raise
-          finally:
-              try:
-                  ftp.quit()
-              except Exception:
-                  pass
-          PY
+      - name: Test upload FTP Aruba
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./ftp-test/
+          server-dir: /www.mariotolvosite.it/wp-content/themes/mt-deploy-test/
+          dry-run: false
+          dangerous-clean-slate: false

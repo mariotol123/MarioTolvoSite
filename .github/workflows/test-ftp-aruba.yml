@@ -1,0 +1,28 @@
+
+name: Test FTP Aruba
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-ftp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare test file
+        run: |
+          mkdir -p ftp-test
+          echo "Connessione GitHub Aruba OK" > ftp-test/test.txt
+
+      - name: Test real FTP upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./ftp-test/
+          server-dir: ./wp-content/themes/mt-deploy-test/
+          dry-run: false
+          dangerous-clean-slate: false

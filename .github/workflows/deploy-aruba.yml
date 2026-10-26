@@ -54,4 +54,4 @@ jobs:
           port: 21
           local-dir: ./deploy-theme/
           server-dir: ${{ vars.ARUBA_THEME_DIR }}
-          dry-run: true
+          dry-run: false

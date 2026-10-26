@@ -303,3 +303,27 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Favicon personalizzata MT
+ */
+function mario_tolvo_custom_favicon() {
+    $favicon_url = get_stylesheet_directory_uri()
+        . '/assets/logos/mt-favicon/';
+    ?>
+    <link rel="icon" type="image/x-icon"
+          href="<?php echo esc_url($favicon_url . 'favicon.ico'); ?>">
+
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="<?php echo esc_url($favicon_url . 'favicon-32.png'); ?>">
+
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="<?php echo esc_url($favicon_url . 'favicon-16.png'); ?>">
+
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="<?php echo esc_url($favicon_url . 'apple-touch-icon.png'); ?>">
+    <?php
+}
+
+remove_action('wp_head', 'wp_site_icon', 99);
+add_action('wp_head', 'mario_tolvo_custom_favicon');
